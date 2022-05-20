@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "25955909571",
+    "project_id": "bianattask",
+    "storage_bucket": "bianattask.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25955909571:android:9102b8545059ccf850c776",
+        "android_client_info": {
+          "package_name": "com.example.bianat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25955909571-eo4dfms4fefhc1l9r28slopieaqjudd6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bianat_app",
+            "certificate_hash": "166176d9720d6b792d1784ed51b16eb64a9b3c05"
+          }
+        },
+        {
+          "client_id": "25955909571-gogl40ha9a9ogrf0g008n49il2e116uo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAm3NIH3ptVMz2o6YWgHVkQgA_dTKqviv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25955909571-gogl40ha9a9ogrf0g008n49il2e116uo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
