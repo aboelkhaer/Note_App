@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import '../view/widgets/widgets.dart';
 
 class HomeController extends GetxController {
@@ -19,9 +20,10 @@ class HomeController extends GetxController {
   late CollectionReference collectionReferenceForUser;
   RxList<Note> notes = RxList<Note>([]);
   Random random = Random();
+  String appLink = '';
 
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
     user = Get.arguments;
     titleController = TextEditingController();
@@ -30,6 +32,7 @@ class HomeController extends GetxController {
     collectionReferenceForUser = firebaseFirestore.collection('Notes')
       ..where('user_id', isEqualTo: user.uid);
     notes.bindStream(getAllNotes());
+    getAppLink();
   }
 
   @override
@@ -142,5 +145,20 @@ class HomeController extends GetxController {
         .orderBy('creation_date', descending: true)
         .snapshots()
         .map((query) => query.docs.map((item) => Note.fromJson(item)).toList());
+  }
+
+  Future getAppLink() {
+    return firebaseFirestore.collection('AppLink').limit(1).get().then(
+      (value) {
+        appLink = value.docs[0]['app_link'];
+      },
+    );
+  }
+
+  void shareContent(String noteTitle, String noteContent) async {
+    String appUrl = appLink;
+    await Share.share(
+      'Note title: $noteTitle\nNote content: $noteContent\n\nJoin us: $appUrl',
+    );
   }
 }

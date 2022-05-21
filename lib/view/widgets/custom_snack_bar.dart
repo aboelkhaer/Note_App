@@ -15,11 +15,11 @@ class CustomSnackBar {
       backgroundColor: backgroundColor,
       titleText: Text(
         title,
-        style: TextStyle(fontSize: 16, color: Colors.white),
+        style: const TextStyle(fontSize: 16, color: Colors.white),
       ),
       messageText: Text(
         message,
-        style: TextStyle(fontSize: 16, color: Colors.white),
+        style: const TextStyle(fontSize: 16, color: Colors.white),
       ),
       colorText: Colors.white,
     );

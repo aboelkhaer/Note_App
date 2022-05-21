@@ -1,6 +1,5 @@
 import 'package:bianat_app/controller/home_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:bianat_app/app/style/app_style.dart';
@@ -46,7 +45,7 @@ class HomeScreen extends GetView<HomeController> {
                 fontSize: 16,
               ),
             ),
-            Divider(
+            const Divider(
               color: Colors.white,
             ),
             const SizedBox(height: 20),
@@ -99,6 +98,9 @@ class HomeScreen extends GetView<HomeController> {
                                     text: 'Update',
                                     addEditFlag: 2,
                                     docId: controller.notes[index].id,
+                                    noteTitle: controller.notes[index].title,
+                                    noteContent:
+                                        controller.notes[index].content,
                                   );
                                 },
                                 child: Container(
@@ -145,7 +147,7 @@ class HomeScreen extends GetView<HomeController> {
                                               controller.deleteData(
                                                   controller.notes[index].id!);
                                             },
-                                            icon: Icon(Icons.delete),
+                                            icon: const Icon(Icons.delete),
                                           ),
                                         ],
                                       ),
@@ -165,7 +167,12 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  _buildAddEditNoteView({String? text, int? addEditFlag, String? docId}) {
+  _buildAddEditNoteView(
+      {String? text,
+      int? addEditFlag,
+      String? docId,
+      String? noteTitle,
+      String? noteContent}) {
     return Get.bottomSheet(
       Container(
         decoration: const BoxDecoration(
@@ -193,10 +200,12 @@ class HomeScreen extends GetView<HomeController> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                Clipboard.setData(ClipboardData(text: docId));
-                                Get.snackbar('Copied',
-                                    'The note id had been copied successfully.',
-                                    colorText: Colors.green);
+                                // Clipboard.setData(ClipboardData(text: docId));
+                                // Get.snackbar('Copied',
+                                //     'The note id had been copied successfully.',
+                                //     colorText: Colors.green);
+                                controller.shareContent(
+                                    noteTitle!, noteContent!);
                               },
                               child: const Text(
                                 'Share this note',

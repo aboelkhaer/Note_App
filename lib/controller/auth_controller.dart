@@ -1,5 +1,4 @@
 import 'package:bianat_app/app/routes/app_pages.dart';
-import 'package:bianat_app/view/widgets/customFullScreenDialog.dart';
 
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,16 +11,6 @@ class AuthController extends GetxController {
   RxBool isSignIn = false.obs;
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 
-  // @override
-  // void onReady() async {
-  //   super.onReady();
-  //   googleSignIn = GoogleSignIn();
-  //   ever(isSignIn, handleAuthStateChanged);
-  //   isSignIn.value = await firebaseAuth.currentUser != null;
-  //   firebaseAuth.authStateChanges().listen((event) {
-  //     isSignIn.value = event != null;
-  //   });
-  // }
   @override
   void onInit() async {
     googleSignIn = GoogleSignIn();
@@ -68,23 +57,6 @@ class AuthController extends GetxController {
       );
     }
   }
-
-  // void signInWithGoogle() async {
-  //   CustomFullScreenDialog.showDialog();
-  //   GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
-  //   if (googleSignInAccount == null) {
-  //     CustomFullScreenDialog.cancelDialog();
-  //   } else {
-  //     GoogleSignInAuthentication googleSignInAuthentication =
-  //         await googleSignInAccount.authentication;
-  //     OAuthCredential oAuthCredential = GoogleAuthProvider.credential(
-  //       accessToken: googleSignInAuthentication.accessToken,
-  //       idToken: googleSignInAuthentication.idToken,
-  //     );
-  //     await firebaseAuth.signInWithCredential(oAuthCredential);
-  //     CustomFullScreenDialog.cancelDialog();
-  //   }
-  // }
 
   void signout() async {
     try {
